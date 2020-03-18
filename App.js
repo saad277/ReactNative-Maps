@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -8,55 +8,33 @@ import {
   StatusBar,
 } from 'react-native';
 
-import MapView from 'react-native-maps'
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation'
+
+import Home from './Components/home'
+import HeatMap from './Components/heatMap'
+
+import Playground from './Components/playground'
 
 
 
-const App = () => {
+
+const StackNavigator = createStackNavigator({
+
+  Playground:Playground,
+  Home: Home,
+  HeatMap: HeatMap,
 
 
-  return (
-
-    <View style={styles.container}>
+});
 
 
-      <MapView
-        // remove if not using Google Maps
-        style={styles.map}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}
-      >
-      </MapView>
-    </View>
-  )
-
-}
-
-const styles = StyleSheet.create({
-
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
 
 
-})
 
 
-export default App;
+
+
+
+
+export default createAppContainer(StackNavigator);
